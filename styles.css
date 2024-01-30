@@ -1,0 +1,20 @@
+body {
+    font-family: 'Caveat', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #ffe4e1;
+}
+
+header {
+    background-color: #ff69b4;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+footer {
+    background-color: #ff69b4;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
