@@ -1,3 +1,4 @@
+/*
 body {
     font-family: 'Caveat', cursive;
     margin: 0;
@@ -6,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #ff69b4;
+    background-color: #939393;
     color: #fff;
     padding: 15px;
     text-align: center;
@@ -18,36 +19,33 @@ footer {
     padding: 15px;
     text-align: center;
 }
-
-/*
-og gpt style
-<style>
-          body {
-              font-family: Arial, sans-serif;
-              margin: 0;
-              padding: 0;
-              background-color: #f4f4f4;
-          }
-  
-          header {
-              background-color: #333;
-              color: #fff;
-              padding: 1em;
-              text-align: center;
-          }
-  
-          main {
-              padding: 20px;
-          }
-  
-          footer {
-              background-color: #333;
-              color: #fff;
-              text-align: center;
-              padding: 1em;
-              position: fixed;
-              bottom: 0;
-              width: 100%;
-          }
-      </style>
 */
+
+/* og gpt style */
+body {
+    font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+  
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+    }
+  
+    main {
+        padding: 20px;
+    }
+  
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1em;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        }
