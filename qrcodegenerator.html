@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QR Code Generator</title>
-  <link rel="icon" type="image/x-icon" href="/qrcodefavicon.ico">
+  <link rel="icon" type="image/x-icon" href="resources/qrcodefavicon.ico">
 
   <style>
     *, *::before, *::after {
@@ -79,7 +79,7 @@
     <p style="color:lightcoral">(if using google forms, copy the "shortened" responder link)</p>
     <input id="text" type="text" placeholder="Enter text or URL" onkeydown="handleEnter(event)" />
     <button onclick="generateQR()">Generate QR Code</button>
-    <button id="downloadBtn" style="margin-top:0.5rem;background:#16a34a;opacity:0.5" onclick="downloadPNG()" disabled>Download PNG</button>
+    <button id="downloadBtn" style="margin-top:0.5rem;background:#16a34a;opacity:0.5;cursor:not-allowed" onclick="downloadPNG()" disabled>Download PNG</button>
     <div id="qrcode"></div>
     <footer>
       Created by <a href="https://github.com/Fa1conX" target="_blank" style="color:#60a5fa">Karsten H</a>, Powered by <a href="https://github.com/davidshimjs/qrcodejs" target="_blank" style="color:#60a5fa">qrcodejs</a>
@@ -112,6 +112,7 @@
 
       downloadBtn.disabled = false;
       downloadBtn.style.opacity = "1";
+      downloadBtn.style.cursor = "pointer";
     }
 
     function handleEnter(event) {
