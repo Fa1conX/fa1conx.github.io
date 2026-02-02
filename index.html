@@ -1,42 +1,118 @@
 <!DOCTYPE html>
-<!--
 <html lang="en">
-  <head class="main">
-    <title>Karsten's Website</title>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
-      <link rel="stylesheet" type="text/css" href="./styles.css">
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5c1f2c">
-      
-      <meta name="apple-mobile-web-app-title" content="Fa1conX home">
-      <meta name="application-name" content="¯\_(ツ)_/¯">
-  
-      
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fa1conX - Portfolio</title>
+    <link rel="stylesheet" href="home-styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">Fa1conX</h1>
+                <ul class="nav-links">
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="https://github.com/Fa1conX" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </nav>
 
-  <body>
-  
-      <header>
-          <h1>Hello there</h1>
-      </header>
-  
-      <main>
-          <p>Some intro text... ChatGPT?</p>
-          <a href="./digitaltechmain/digitaltechhome.html">Digital Technologies</a>
-          <a href="./digitaltechmain/myonlineself.html">My Online Self</a>
-        <marquee truespeed="">testing...</marquee>
-      </main>
-      
-      <footer style="  position: fixed; left: 0; bottom: 0; width: 100%; background-color: rgb(113, 113, 206)">
-        <p><a href="https://www.instagram.com/fa1conx_photography">@Fa1conX_photography</a></p>  
-        <p>&copy; 2024 Karsten Hakes. All rights reserved.</p>
-      </footer>
-  
-  </body>
-  </html>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Welcome to My Portfolio</h2>
+                    <p>Full-stack developer passionate about building cool projects</p>
+                    <a href="#projects" class="btn btn-primary">Explore My Work</a>
+                </div>
+            </div>
+        </section>
+    </header>
 
--->
+    <main>
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <div class="projects-grid">
+                    <!-- fa1conx.github.io -->
+                    <a href="https://github.com/Fa1conX/fa1conx.github.io" class="project-card" target="_blank">
+                        <div class="project-header">
+                            <h3>fa1conx.github.io</h3>
+                            <span class="language-badge html">HTML</span>
+                        </div>
+                        <p class="project-description">Personal portfolio website showcasing my projects and work</p>
+                        <div class="project-meta">
+                            <span class="updated">Recently active</span>
+                        </div>
+                    </a>
+
+                    <!-- GPS-project-jetson -->
+                    <a href="https://github.com/Fa1conX/GPS-project-jetson" class="project-card" target="_blank">
+                        <div class="project-header">
+                            <h3>GPS-project-jetson</h3>
+                            <span class="language-badge python">Python</span>
+                        </div>
+                        <p class="project-description">GPS tracking and location-based project built for Jetson hardware</p>
+                        <div class="project-meta">
+                            <span class="updated">Recently active</span>
+                        </div>
+                    </a>
+
+                    <!-- peloton-to-garmin -->
+                    <a href="https://github.com/Fa1conX/peloton-to-garmin" class="project-card" target="_blank">
+                        <div class="project-header">
+                            <h3>peloton-to-garmin</h3>
+                            <span class="language-badge csharp">C#</span>
+                        </div>
+                        <p class="project-description">Convert workout data from Peloton into JSON/TCX/FIT files and automatically upload to Garmin Connect</p>
+                        <div class="project-meta">
+                            <span class="license">GPL v3</span>
+                        </div>
+                    </a>
+
+                    <!-- Food-Inventory -->
+                    <a href="https://github.com/Fa1conX/Food-Inventory" class="project-card" target="_blank">
+                        <div class="project-header">
+                            <h3>Food-Inventory</h3>
+                            <span class="language-badge python">Python</span>
+                        </div>
+                        <p class="project-description">Inventory management system for tracking food items and stock levels</p>
+                        <div class="project-meta">
+                            <span class="updated">Jan 2023</span>
+                        </div>
+                    </a>
+
+                    <!-- Fa1conX Config -->
+                    <a href="https://github.com/Fa1conX/Fa1conX" class="project-card" target="_blank">
+                        <div class="project-header">
+                            <h3>Fa1conX</h3>
+                            <span class="language-badge config">Config</span>
+                        </div>
+                        <p class="project-description">Config files for my GitHub profile</p>
+                        <div class="project-meta">
+                            <span class="tag">github-config</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Interested in my work?</h2>
+                <p>Check out more of my projects on GitHub or get in touch</p>
+                <a href="https://github.com/Fa1conX" class="btn btn-secondary" target="_blank">Visit GitHub Profile</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Fa1conX. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/Fa1conX" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
