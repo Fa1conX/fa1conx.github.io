@@ -66,6 +66,7 @@
     <h1>QR Code Generator</h1>
     <input id="text" type="text" placeholder="Enter text or URL" />
     <button onclick="generateQR()">Generate QR Code</button>
+    <button style="margin-top:0.5rem;background:#16a34a" onclick="downloadPNG()">Download PNG</button>
     <div id="qrcode"></div>
     <footer>
       Created by Karsten H, Powered by <a href="https://github.com/davidshimjs/qrcodejs" target="_blank" style="color:#60a5fa">qrcodejs</a>
@@ -76,6 +77,8 @@
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <script>
     let qr;
+    let lastText = "";
+    let qr;
 
     function generateQR() {
       const text = document.getElementById("text").value.trim();
@@ -83,6 +86,7 @@
 
       if (!text) return;
 
+      lastText = text;
       container.innerHTML = "";
       qr = new QRCode(container, {
         text: text,
@@ -93,6 +97,28 @@
         correctLevel: QRCode.CorrectLevel.H
       });
     }
+
+    function downloadPNG() {
+      const container = document.getElementById("qrcode");
+      const img = container.querySelector("img");
+      const canvas = container.querySelector("canvas");
+
+      let dataUrl;
+      if (img) {
+        dataUrl = img.src;
+      } else if (canvas) {
+        dataUrl = canvas.toDataURL("image/png");
+      } else {
+        return;
+      }
+
+      const a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = "qr-code.png";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
   </script>
 </body>
 </html>
