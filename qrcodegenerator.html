@@ -64,9 +64,9 @@
 <body>
   <div class="card">
     <h1>QR Code Generator</h1>
-    <input id="text" type="text" placeholder="Enter text or URL" />
+    <input id="text" type="text" placeholder="Enter text or URL" onkeydown="handleEnter(event)" />
     <button onclick="generateQR()">Generate QR Code</button>
-    <button style="margin-top:0.5rem;background:#16a34a" onclick="downloadPNG()">Download PNG</button>
+    <button id="downloadBtn" style="margin-top:0.5rem;background:#16a34a;opacity:0.5" onclick="downloadPNG()" disabled>Download PNG</button>
     <div id="qrcode"></div>
     <footer>
       Created by Karsten H, Powered by <a href="https://github.com/davidshimjs/qrcodejs" target="_blank" style="color:#60a5fa">qrcodejs</a>
@@ -78,11 +78,11 @@
   <script>
     let qr;
     let lastText = "";
-    let qr;
 
     function generateQR() {
       const text = document.getElementById("text").value.trim();
       const container = document.getElementById("qrcode");
+      const downloadBtn = document.getElementById("downloadBtn");
 
       if (!text) return;
 
@@ -96,6 +96,15 @@
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
       });
+
+      downloadBtn.disabled = false;
+      downloadBtn.style.opacity = "1";
+    }
+
+    function handleEnter(event) {
+      if (event.key === "Enter") {
+        generateQR();
+      }
     }
 
     function downloadPNG() {
@@ -109,6 +118,7 @@
       } else if (canvas) {
         dataUrl = canvas.toDataURL("image/png");
       } else {
+        alert("Generate a QR code first");
         return;
       }
 
@@ -118,7 +128,7 @@
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-    };
-  </script>
+    }
+    </script>
 </body>
 </html>
