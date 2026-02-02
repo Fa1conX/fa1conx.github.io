@@ -28,6 +28,8 @@
     h1 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
+      color: #e5e7eb;
+
     }
     input {
       width: 100%;
@@ -66,7 +68,7 @@
 <body>
   <div class="card">
     <h1>QR Code Generator</h1>
-    <body style="color:red">(if using google forms, copy the "shortened" responder link)</body>
+    <p style="color:lightcoral">(if using google forms, copy the "shortened" responder link)</p>
     <input id="text" type="text" placeholder="Enter text or URL" onkeydown="handleEnter(event)" />
     <button onclick="generateQR()">Generate QR Code</button>
     <button id="downloadBtn" style="margin-top:0.5rem;background:#16a34a;opacity:0.5" onclick="downloadPNG()" disabled>Download PNG</button>
