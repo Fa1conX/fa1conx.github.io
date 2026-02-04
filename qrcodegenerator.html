@@ -24,6 +24,25 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      position: relative;
+    }
+
+    .logo-corner {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 10;
+    }
+
+    .logo-corner img {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-corner img:hover {
+      transform: scale(1.1);
     }
     .card {
       background: #020617;
@@ -74,6 +93,11 @@
   </style>
 </head>
 <body>
+  <div class="logo-corner">
+    <a href="/index.html">
+      <img src="resources/falcon logo/android-chrome-192x192.png" alt="Fa1conX Logo">
+    </a>
+  </div>
   <div class="card">
     <h1>QR Code Generator</h1>
     <p style="color:lightcoral">(if using google forms, copy the "shortened" responder link)</p>
