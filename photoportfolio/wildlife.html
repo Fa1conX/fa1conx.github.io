@@ -68,11 +68,41 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Fa1conX. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/Fa1conX" target="_blank">GitHub</a>
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2026 Fa1conX. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Fa1conX" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
 </body>
 </html>
