@@ -90,6 +90,33 @@
       color: #9ca3af;
       text-align: center;
     }
+
+    .warning-message {
+      display: none;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      background: #7c2d12;
+      border-left: 4px solid #ea580c;
+      color: #fed7aa;
+      font-size: 0.9rem;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .warning-message.show {
+      display: block;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -100,8 +127,10 @@
   </div>
   <div class="card">
     <h1>QR Code Generator</h1>
-    <p style="color:lightcoral">(if using google forms, copy the "shortened" responder link)</p>
-    <input id="text" type="text" placeholder="Enter text or URL" onkeydown="handleEnter(event)" />
+    <div id="warningMessage" class="warning-message">
+      ⚠️ <strong>Tip:</strong> It's recommended to use the shortened Google Forms link (forms.gle/...) for better QR code compatibility. The long link will still work, but the shortened version is preferred.
+    </div>
+    <input id="text" type="text" placeholder="Enter text or URL" onkeydown="handleEnter(event)" oninput="checkForLongGoogleFormsLink()" />
     <button onclick="generateQR()">Generate QR Code</button>
     <button id="downloadBtn" style="margin-top:0.5rem;background:#16a34a;opacity:0.5;cursor:not-allowed" onclick="downloadPNG()" disabled>Download PNG</button>
     <div id="qrcode"></div>
@@ -117,6 +146,21 @@
     let qr;
     let lastText = "";
     const DISCORD_WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1484702269395177583/X7oimPvjRg7tXuntSrfpPEEhPZwreCfQgKTVY8s-BzR_HkIHKlMktYozdrK2l0CvnSDO";
+
+    // Check if the input is a long Google Forms link and show warning
+    function checkForLongGoogleFormsLink() {
+      const text = document.getElementById("text").value.trim();
+      const warningElement = document.getElementById("warningMessage");
+      
+      // Pattern for long Google Forms URL
+      const longFormsPattern = /https:\/\/docs\.google\.com\/forms\/d\/e\/[^/]+\/viewform/i;
+      
+      if (longFormsPattern.test(text)) {
+        warningElement.classList.add("show");
+      } else {
+        warningElement.classList.remove("show");
+      }
+    }
 
     // Send log to Discord (fails silently if unreachable)
     function logToDiscord(message) {
