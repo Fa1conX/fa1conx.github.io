@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underwater - Photo Portfolio</title>
+    <link rel="stylesheet" href="../home-styles.css">
+    <link rel="icon" type="image/x-icon" href="../resources/falcon logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../resources/falcon logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../resources/falcon logo/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="../resources/falcon logo/apple-touch-icon.png">
+    <link rel="manifest" href="../resources/falcon logo/site.webmanifest">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" class="logo-link">
+                    <img src="../resources/falcon logo/android-chrome-192x192.png" alt="Fa1conX Logo" class="logo-image">
+                    <h1 class="logo">Fa1conX</h1>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../photoportfolio.html">Gallery</a></li>
+                    <li><a href="../qrcodegenerator.html">QR Generator</a></li>
+                    <li><a href="https://github.com/Fa1conX" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Underwater</h2>
+                    <p>Marine Life & Aquatic Scenes</p>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section class="gallery-section">
+            <div class="container">
+                <a href="../photoportfolio.html" class="back-link">&larr; Back to Categories</a>
+                
+                <div class="gallery-grid">
+                    <!-- Image 1 - Replace src with your image path -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1583212192562-40cb08fbc233?w=500&h=500&fit=crop" alt="Photo 1">
+                    </div>
+
+                    <!-- Image 2 - Replace src with your image path -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=500&h=500&fit=crop" alt="Photo 2">
+                    </div>
+
+                    <!-- Image 3 - Replace src with your image path -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=500&h=500&fit=crop" alt="Photo 3">
+                    </div>
+
+                    <!-- Image 4 - Replace src with your image path -->
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=500&h=500&fit=crop" alt="Photo 4">
+                    </div>
+
+                    <!-- To add more images, simply duplicate the gallery-item div below -->
+                    <!-- Template:
+                    <div class="gallery-item">
+                        <img src="YOUR_IMAGE_PATH_HERE" alt="Image description">
+                    </div>
+                    -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2026 Fa1conX. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Fa1conX" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
+</body>
+</html>
