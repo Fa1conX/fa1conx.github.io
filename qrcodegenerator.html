@@ -117,6 +117,25 @@
         transform: translateY(0);
       }
     }
+
+    .qr-navbar {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10;
+    }
+
+    .qr-navbar a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .qr-navbar a:hover {
+      color: #3b82f6;
+    }
   </style>
 </head>
 <body>
@@ -124,6 +143,12 @@
     <a href="/index.html">
       <img src="resources/falcon logo/android-chrome-192x192.png" alt="Fa1conX Logo">
     </a>
+  </div>
+  <div class="qr-navbar">
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/photoportfolio.html">Gallery</a>
+    <a href="https://github.com/Fa1conX" target="_blank">GitHub</a>
   </div>
   <div class="card">
     <h1>QR Code Generator</h1>
