@@ -76,6 +76,19 @@
         </section>
     </main>
 
+    <!-- Image Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-container">
+            <button class="lightbox-close" aria-label="Close image">&times;</button>
+            <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+            <img id="lightbox-image" src="" alt="" class="lightbox-image">
+            <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+            <div class="lightbox-counter">
+                <span id="current-image">1</span> / <span id="total-images">4</span>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -115,6 +128,73 @@
         function updateThemeIcon(theme) {
             themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
         }
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxclose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+        const currentImageSpan = document.getElementById('current-image');
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        let currentImageIndex = 0;
+
+        // Open lightbox when image is clicked
+        galleryItems.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentImageIndex = index;
+                openLightbox();
+            });
+        });
+
+        function openLightbox() {
+            const img = galleryItems[currentImageIndex];
+            lightboxImage.src = img.src;
+            lightboxImage.alt = img.alt;
+            currentImageSpan.textContent = currentImageIndex + 1;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+            openLightbox();
+        }
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+            openLightbox();
+        }
+
+        // Event listeners
+        lightboxclose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', showNextImage);
+        lightboxPrev.addEventListener('click', showPrevImage);
+
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'ArrowRight') {
+                showNextImage();
+            } else if (e.key === 'ArrowLeft') {
+                showPrevImage();
+            } else if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
     </script>
 </body>
 </html>
