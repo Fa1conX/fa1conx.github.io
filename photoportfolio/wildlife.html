@@ -136,8 +136,12 @@
         const lightboxPrev = document.querySelector('.lightbox-prev');
         const lightboxNext = document.querySelector('.lightbox-next');
         const currentImageSpan = document.getElementById('current-image');
+        const totalImageSpan = document.getElementById('total-images');
         const galleryItems = document.querySelectorAll('.gallery-item img');
         let currentImageIndex = 0;
+
+        // Set total images dynamically
+        totalImageSpan.textContent = galleryItems.length;
 
         // Open lightbox when image is clicked
         galleryItems.forEach((img, index) => {
