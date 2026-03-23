@@ -422,13 +422,17 @@ body {
 
 .social-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .social-links a {
     color: var(--accent);
     text-decoration: none;
     font-weight: 600;
+    transition: var(--transition);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
     transition: var(--transition);
 }
 
