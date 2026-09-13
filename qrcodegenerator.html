@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QR Code Generator</title>
+  <link rel="stylesheet" href="home-styles.css">
   <link rel="icon" type="image/x-icon" href="resources/qrcodefavicon.ico">
 
   <style>
@@ -11,8 +12,8 @@
     box-sizing: border-box;
     }
 
-    p {
-    margin: 1rem 0 1rem 0;
+    .card p {
+      margin: 1rem 0;
     }
 
     body {
@@ -20,11 +21,19 @@
       background: #0f172a;
       color: #e5e7eb;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      flex-direction: column;
+      min-height: 100vh;
       margin: 0;
       position: relative;
+    }
+
+    .page-shell {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6rem 1rem 2rem;
     }
 
     .logo-corner {
@@ -66,7 +75,7 @@
       margin-bottom: 1rem;
       font-size: 1rem;
     }
-    button {
+    button:not(.theme-toggle) {
       width: 100%;
       padding: 0.75rem;
       border-radius: 10px;
@@ -76,7 +85,7 @@
       font-size: 1rem;
       cursor: pointer;
     }
-    button:hover {
+    button:not(.theme-toggle):hover {
       background: #1d4ed8;
     }
     #qrcode {
@@ -84,11 +93,35 @@
       display: flex;
       justify-content: center;
     }
-    footer {
-      margin-top: 1rem;
+    .footer {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      border-top: 1px solid var(--border-color, #334155);
+      padding: 3rem 0;
+      margin-top: 4rem;
       font-size: 0.75rem;
       color: #9ca3af;
       text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+      color: var(--text-secondary, #cbd5e1);
+    }
+
+    .theme-toggle {
+      width: auto;
+      margin: 0;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-primary, #f1f5f9);
+      border: 2px solid var(--border-color, #334155);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition, all 0.3s ease);
     }
 
     .warning-message {
@@ -150,17 +183,20 @@
     <a href="/photoportfolio.html">Gallery</a>
     <a href="https://github.com/Fa1conX" target="_blank">GitHub</a>
   </div>
-  <div class="card">
-    <h1>QR Code Generator</h1>
-    <div id="warningMessage" class="warning-message">
-      ⚠️ <strong>Tip:</strong> It's recommended to use the shortened Google Forms link (forms.gle/...) for better QR code compatibility. The long link will still work, but the shortened version is preferred.
+  <div class="page-shell">
+    <div class="card">
+      <h1>QR Code Generator</h1>
+      <div id="warningMessage" class="warning-message">
+        ⚠️ <strong>Tip:</strong> It's recommended to use the shortened Google Forms link (forms.gle/...) for better QR code compatibility. The long link will still work, but the shortened version is preferred.
+      </div>
+      <input id="text" type="text" placeholder="Enter text or URL" onkeydown="handleEnter(event)" oninput="checkForLongGoogleFormsLink()" />
+      <button onclick="generateQR()">Generate QR Code</button>
+      <button id="downloadBtn" style="margin-top:0.5rem;background:#16a34a;opacity:0.5;cursor:not-allowed" onclick="downloadPNG()" disabled>Download PNG</button>
+      <div id="qrcode"></div>
     </div>
-    <input id="text" type="text" placeholder="Enter text or URL" onkeydown="handleEnter(event)" oninput="checkForLongGoogleFormsLink()" />
-    <button onclick="generateQR()">Generate QR Code</button>
-    <button id="downloadBtn" style="margin-top:0.5rem;background:#16a34a;opacity:0.5;cursor:not-allowed" onclick="downloadPNG()" disabled>Download PNG</button>
-    <div id="qrcode"></div>
-    </div>
+  </div>
   
+  <!--
   <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -178,7 +214,7 @@
             </div>
         </div>
     </footer>
-  </div>
+  -->
 
   <!-- Lightweight, well-known QR library -->
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
